@@ -6,6 +6,19 @@ __pycache__/
 # C extensions
 *.so
 
+# vscode
+vscode/
+
+# google api quickstart
+quickstart.py
+
+# personal credentials
+credentials.json
+token.pickle
+
+# Thing I use don't worry about it
+tabs.py
+
 # Distribution / packaging
 .Python
 build/
