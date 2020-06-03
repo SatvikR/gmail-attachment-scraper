@@ -16,8 +16,8 @@ def read_json(file):
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 def main():
-    """Shows basic usage of the Gmail API.
-    Lists the user's Gmail labels.
+    """
+    downloads attachments
     """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
