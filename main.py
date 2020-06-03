@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 import json
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from getdata import ListMessagesMatchingQuery, ListMessagesWithLabels, GetAttachments
+from getdata import ListMessagesMatchingQuery, GetAttachments
 
 
 def read_json(file):
@@ -50,7 +50,6 @@ def main():
     email = str(targets['target'])
     path = str(targets['path'])
 
-    unread_messages = ListMessagesWithLabels(service, 'me', 'UNREAD')
     target_messages = ListMessagesMatchingQuery(service, 'me', query='from:'+ email + ' is:unread')
     
     for msg in target_messages:
