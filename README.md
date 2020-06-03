@@ -12,3 +12,4 @@ Given a target email address and path, this script will download all attachments
 3. Run setup.py
 4. Run main.py. If the OATH tells you that the script is unsafe, (which it isn't), click advanced, and there should be an option to trust the app.
 5. The next time you run main.py, you will not get the OAUTH prompt
+6. Run setup.py again if you want to change the path or the target email adress
