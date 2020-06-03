@@ -69,3 +69,27 @@ def GetAttachments(service, user_id, msg_id, store_dir):
 
 	except errors.HttpError as error:
 		print('An error occurred: %s' % error)
+
+def ModifyMessage(service, user_id, msg_id, msg_labels):
+	"""Modify the Labels on the given Message.
+
+	Args:
+		service: Authorized Gmail API service instance.
+		user_id: User's email address. The special value "me"
+		can be used to indicate the authenticated user.
+		msg_id: The id of the message required.
+		msg_labels: The change in labels.
+
+	Returns:
+		Modified message, containing updated labelIds, id and threadId.
+	"""
+	try:
+		message = service.users().messages().modify(userId=user_id, id=msg_id,body=msg_labels).execute()
+																								
+
+		label_ids = message['labelIds']
+
+		# print('Message ID: %s - With Label IDs %s' % (msg_id, label_ids))
+		return message
+	except errors.HttpError as error:
+		print('An error occurred: %s' % error)
