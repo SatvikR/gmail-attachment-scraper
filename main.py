@@ -43,7 +43,7 @@ def main():
     # Call the Gmail API
     try:
         targets = read_json('paths.json')
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, FileNotFoundError):
         print("Please run setup.py\n")
         exit()
 
