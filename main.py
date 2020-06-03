@@ -5,7 +5,7 @@ from googleapiclient.discovery import build
 import json
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from getdata import ListMessagesMatchingQuery, GetAttachments
+from getdata import ListMessagesMatchingQuery, GetAttachments, ModifyMessage
 
 
 def read_json(file):
@@ -13,7 +13,7 @@ def read_json(file):
         return json.load(f)
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.modify']
 
 def main():
     """
@@ -51,9 +51,11 @@ def main():
     path = str(targets['path'])
 
     target_messages = ListMessagesMatchingQuery(service, 'me', query='from:'+ email + ' is:unread')
-    
+    unread_modifier = {'removeLabelIds': ['UNREAD'], 'addLabelIds': []}
+
     for msg in target_messages:
         print(GetAttachments(service, 'me', msg['id'], path))
+        ModifyMessage(service, 'me', msg['id'], unread_modifier)
     
     print("Sucess! \n")
 
