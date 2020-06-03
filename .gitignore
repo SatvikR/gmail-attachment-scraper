@@ -15,6 +15,7 @@ quickstart.py
 # personal credentials
 credentials.json
 token.pickle
+paths.json
 
 # Thing I use don't worry about it
 tabs.py
