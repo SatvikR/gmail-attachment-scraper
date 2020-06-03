@@ -7,7 +7,7 @@ Given a target email address and path, this script will download all attachments
 
 # How to use
 1. Go to https://developers.google.com/gmail/api/quickstart/python, click Enable the Gmail API.
-3. Run pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib (use pip3 if this doesn't work)
+3. Run ```pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib``` (use pip3 if this doesn't work)
 2. Click DOWNLOAD CLIENT CONFIGURATION and save the file credentials.json to the folder that you downloaded this repo.
 3. Run setup.py
 4. Run main.py. If the OATH tells you that the script is unsafe, (which it isn't), click advanced, and there should be an option to trust the app.
