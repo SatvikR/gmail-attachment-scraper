@@ -53,7 +53,7 @@ def GetAttachments(service, user_id, msg_id, store_dir):
 	"""
 	try:
 		message = service.users().messages().get(userId=user_id, id=msg_id).execute()
-
+		out = ""
 		for part in message['payload']['parts']:
 			if part['filename']:
 				attachment = service.users().messages().attachments().get(userId='me', messageId=message['id'], id=part['body']['attachmentId']).execute()
@@ -65,7 +65,8 @@ def GetAttachments(service, user_id, msg_id, store_dir):
 				f.write(file_data)
 				f.close()
 
-				return f"Downloaded {part['filename']} into {path}."
+				out += f"Downloaded {part['filename']} into {path}.\n"
+		return out
 
 	except errors.HttpError as error:
 		print('An error occurred: %s' % error)
